@@ -4,7 +4,6 @@ function FileUpload() {
   const [files, setFiles] = useState<File[]>([]);
   const [dragActive, setDragActive] = useState(false);
 
-  // Handle file drop or selection
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
   ) => {
@@ -16,7 +15,6 @@ function FileUpload() {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
   };
 
-  // Handle drag events
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -27,7 +25,6 @@ function FileUpload() {
     }
   };
 
-  // Handle drop
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -35,13 +32,11 @@ function FileUpload() {
     handleFileChange(e);
   };
 
-  // Clear files (for demo purposes)
   const clearFiles = () => setFiles([]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-105">
-        {/* Header */}
         <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
           Upload Your Files
         </h2>
@@ -49,7 +44,6 @@ function FileUpload() {
           Drag & drop or click to select files
         </p>
 
-        {/* Drag & Drop Area */}
         <div
           className={`relative border-2 border-dashed rounded-xl p-8 text-center transition-colors duration-300 ${
             dragActive
@@ -86,7 +80,6 @@ function FileUpload() {
           </p>
         </div>
 
-        {/* File List */}
         {files.length > 0 && (
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 mb-2">
@@ -114,7 +107,6 @@ function FileUpload() {
           </div>
         )}
 
-        {/* Placeholder for Future S3 Upload Button */}
         {files.length > 0 && (
           <button
             disabled
